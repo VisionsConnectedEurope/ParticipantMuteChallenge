@@ -36,11 +36,12 @@ public class AssignmentTest {
 		assertNotNull("Participant should not be null", participantApi.getParticipant(participantId));
 		participantApi.muteParticipant(participantId);
 
-		IntStream.range(0, 10)
+		IntStream.range(0, 20)
 				.forEach(i -> {
 					try {
 						Assert.assertTrue("Participant mute status is incorrect it should have been true.", participantApi.getParticipant(participantId).getMuted());
 						Thread.sleep(800L);
+						log.info("Mute check " + (i + 1) + " passed");
 					} catch (ApiException | InterruptedException ex) {
 						log.error(ex, ex);
 					}
@@ -48,11 +49,12 @@ public class AssignmentTest {
 
 		participantApi.unmuteParticipant(participantId);
 
-		IntStream.range(0, 10)
+		IntStream.range(0, 20)
 				.forEach(i -> {
 					try {
 						Assert.assertFalse("Participant mute status is incorrect it should have been false.", participantApi.getParticipant(participantId).getMuted());
 						Thread.sleep(800L);
+						log.info("Unmute check " + (i + 1) + " passed");
 					} catch (ApiException | InterruptedException ex) {
 						log.error(ex, ex);
 					}

@@ -51,6 +51,6 @@ public class ParticipantService {
 
 	@SneakyThrows
 	public void unmuteParticipant(UUID participantId) {
-		participantApi.muteParticipant(participantId.toString());
+		participantApi.unmuteParticipant(participantId.toString());
 	}
 }
