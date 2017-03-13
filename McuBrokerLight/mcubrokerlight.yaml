@@ -1,0 +1,147 @@
+swagger: '2.0'
+info:
+  title: McuBrokerLight
+  version: "1.0.0"
+  description: A very light version of the McuBroker
+schemes:
+  - "http"
+basePath: /api/v1
+produces:
+  - "application/json"
+paths:
+  /participants:
+    get:
+      operationId: getParticipants
+      description:
+        Return all participants
+      tags:
+        - participant
+      responses:
+        200:
+          description:
+            Return a participantList object containing all participants
+          schema:
+            $ref: "#/definitions/ParticipantList"
+        default:
+          $ref: "#/responses/default"
+  /participants/{participantId}:
+    get:
+      operationId: getParticipant
+      description:
+        Return a specific participants
+      tags:
+        - participant
+      parameters:
+        - $ref: "#/parameters/participantId"
+      responses:
+        200:
+          description:
+            Return an Endpoint object containing the Dial out options, the Video Communication Protocol and Video address.
+          schema:
+            $ref: "#/definitions/Participant"
+        422:
+          description:
+            Invalid request, Invalid participantId.
+          schema:
+           $ref: "#/definitions/Error"
+        default:
+          $ref: "#/responses/default"
+    post:
+      operationId: addParticipant
+      description:
+        add a participants
+      tags:
+        - participant
+      parameters:
+        - $ref: "#/parameters/participantId"
+      responses:
+        200:
+          description:
+            Participant added
+        400:
+          description:
+            Participant already exists
+        default:
+          $ref: "#/responses/default"
+  /participants/{participantId}/mute:
+    post:
+      operationId: muteParticipant
+      description:
+        Mute a specific participants
+      tags:
+        - participant
+      parameters:
+        - $ref: "#/parameters/participantId"
+      responses:
+        200:
+          description:
+            participant has been muted
+        422:
+          description:
+            Invalid request, Invalid participantId.
+          schema:
+           $ref: "#/definitions/Error"
+        default:
+          $ref: "#/responses/default"
+  /participants/{participantId}/unmute:
+    post:
+      operationId: unmuteParticipant
+      description:
+        Unmute a specific participants
+      tags:
+        - participant
+      parameters:
+        - $ref: "#/parameters/participantId"
+      responses:
+        200:
+          description:
+            participant has been unmuted
+        422:
+          description:
+            Invalid request, Invalid participantId.
+          schema:
+           $ref: "#/definitions/Error"
+        default:
+          $ref: "#/responses/default"
+definitions:
+  Participant:
+    type: object
+    properties:
+      participantId:
+        description:
+          The id of the participant
+        type: string
+      muted:
+        description: true participant is muted. false participant is not muted
+        type: boolean
+  ParticipantList:
+    type: object
+    properties:
+      participants:
+        type: array
+        description: An array of participants
+        items:
+          $ref: "#/definitions/Participant"
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string
+parameters:
+  participantId:
+    name: participantId
+    in: path
+    required: true
+    description:
+      The unique id of a participant
+    type: string
+responses:
+  default:
+    description: Unexpected error
+    schema:
+      $ref: "#/definitions/Error"

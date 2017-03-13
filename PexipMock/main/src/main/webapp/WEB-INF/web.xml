@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+		 metadata-complete="true">
+	<display-name>Pexip Mock</display-name>
+
+<!--	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>file:/C:/ProgramData/VisionsConnected/AppointmentStorage/log4j.xml</param-value>
+	</context-param>
+	<context-param>
+		<param-name>log4jExposeWebAppRoot</param-name>
+		<param-value>false</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>-->
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+	<mime-mapping>
+		<extension>js</extension>
+		<mime-type>text/javascript</mime-type>
+	</mime-mapping>
+
+	<!--
+	  serve favicon.ico with the correct mapping, otherwise it will not be
+	  shown in Internet Explorer
+	-->
+	<mime-mapping>
+		<extension>ico</extension>
+		<mime-type>image/x-icon</mime-type>
+	</mime-mapping>
+
+	<!--
+	  serve CSS files with the correct mapping, otherwise it will not be
+	  shown in Internet Explorer
+	-->
+	<mime-mapping>
+		<extension>css</extension>
+		<mime-type>text/css</mime-type>
+	</mime-mapping>
+</web-app>
