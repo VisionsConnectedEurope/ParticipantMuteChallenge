@@ -409,61 +409,14 @@
 			<artifactId>pexipmock-client-v1</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
-		<dependency>
-			<groupId>com.visionsconnected.common</groupId>
-			<artifactId>vc-swagger-utils</artifactId>
-			<version>1.0.0</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>spring-web</artifactId>
-					<groupId>org.springframework</groupId>
-				</exclusion>
-				<exclusion>
-					<groupId>log4j</groupId>
-					<artifactId>log4j</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>junit</groupId>
-					<artifactId>junit</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
 	</dependencies>
 
 	<repositories>
 		<repository>
-			<id>deploymentRelease</id>
-			<url>http://maven.vcdev.lan/nexus/content/repositories/releases</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>deploymentSnapshot</id>
-			<name>Internal Releases</name>
-			<url>http://maven.vcdev.lan/nexus/content/repositories/snapshots/</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
+			<id>maven</id>
+			<url>http://repo1.maven.org/maven2</url>
 		</repository>
 	</repositories>
-	<distributionManagement>
-		<repository>
-			<id>deployment</id>
-			<url>http://maven.vcdev.lan/nexus/content/repositories/releases</url>
-		</repository>
-		<snapshotRepository>
-			<id>deployment</id>
-			<name>Internal Releases</name>
-			<url>http://maven.vcdev.lan/nexus/content/repositories/snapshots/</url>
-		</snapshotRepository>
-	</distributionManagement>
 
 	<properties>
 		<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>

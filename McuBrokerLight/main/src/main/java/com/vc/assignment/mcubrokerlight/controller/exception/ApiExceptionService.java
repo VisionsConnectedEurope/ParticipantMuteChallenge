@@ -1,7 +1,5 @@
 package com.vc.assignment.mcubrokerlight.controller.exception;
 
-import com.vc.common.swagger.exception.ApiException;
-
 import java.util.*;
 
 import org.springframework.http.HttpStatus;
